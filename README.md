@@ -1,7 +1,27 @@
 DirAct
 ======
 
-Proximity interaction beacon jointly developed by reelyActive and Code Blue Consulting.  Runs on Espruino devices with the nRF52 series microcontroller which can easily be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).
+Proximity interaction beacon jointly developed by [reelyActive](https://www.reelyactive.com) and [Code Blue Consulting](https://consultcodeblue.com/).  Runs on [Espruino devices](https://shop.espruino.com/ble) with the nRF52 series microcontroller which can easily be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).
+
+Learn more about __DirAct__ at [reelyactive.github.io/diract](https://reelyactive.github.io/diract/) and the proximity identification use case at [getpareto.com/use-cases/interaction-detection](https://getpareto.com/use-cases/interaction-detection/).
+
+
+Programming Espruino devices with DirAct
+----------------------------------------
+
+The following Espruino devices are supported.
+
+### Puck.js
+
+Code is available in the __puckjs__ folder of this repository.  See our [Develop BLE applications with Puck.js](https://reelyactive.github.io/diy/puckjs-dev/) tutorial for detailed programming instructions.
+
+### Bangle.js
+
+Code is available in the __banglejs__ folder of this repository.  See our [Develop BLE applications with Bangle.js](https://reelyactive.github.io/diy/banglejs-dev/) tutorial for detailed programming instructions.
+
+### MDBT42Q Module
+
+Code is available in the __MDBT42Q__ folder of this repository.
 
 
 License
