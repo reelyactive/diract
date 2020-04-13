@@ -243,6 +243,13 @@
             <figcaption class="figure-caption text-right">DirAct uses physical constraints to its advantage as a chest-worn badge</figcaption>
           </figure>
           <p> DirAct <em>(which is derived from <b>Dir</b>ected inter<b>Act</b>ion)</em> takes advantage of the attenuating effect of the human body when it is <b>implemented as a chest-worn badge</b>.  In this case, face-to-face interactions are clearly distinguished by relative signal strength alone. </p>
+          <!-- DirAct specification -->
+          <h2 class="mt-4"> DirAct specification </h2>
+          <p class="lead"> The implementation of DirAct </p>
+          <p> The DirAct specification includes a definition of the DirAct frame which resides in the payload of a BLE advertising packet.  Observing the DirAct frame specification ensures that any device which receives such a packet may correctly interpret its semantics. </p>
+          <h3> DirAct frame structure </h3>
+          <p> The DirAct frame is structured as follows.  Each of the nearest elements is optional, meaning that the frame length may be 9, 14, 19 or 24 bytes depending on the number of compatible devices detected in proximity. </p>
+          <img src="images/diract-frame.png" class="img-fluid">
           <!----- Where to next? ----->
           <hr class="mt-4">
           <h2> Where to next? </h2>
