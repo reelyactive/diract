@@ -121,7 +121,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
           <h1 class="mt-4"> DirAct </h1>
-          <p class="lead"> Proximity interaction detection software for Bluetooth beacons </p>
+          <p class="lead"> Proximity interaction detection software for <i class="fab fa-bluetooth"></i> Bluetooth beacons </p>
           <img src="images/header.png" class="img-fluid"
                alt="DirAct proximity interaction detection">
           <!----- The TL;DR ----->
@@ -137,9 +137,9 @@
                 <dt class="col-sm-3">Why interactions?</dt>
                 <dd class="col-sm-9">In many use cases, knowing who is <em>interacting with</em> who (or what) is superior to knowing <em>where</em> exactly they are.</dd>
                 <dt class="col-sm-3">Why beacons?</dt>
-                <dd class="col-sm-9">Bluetooth beacons are cost-effective radio transceivers.  Many third-party beacons can be programmed with DirAct.</dd>
+                <dd class="col-sm-9"><i class="fab fa-bluetooth"></i> Bluetooth beacons are cost-effective radio transceivers.  Many third-party beacons can be programmed with DirAct.</dd>
                 <dt class="col-sm-3">Any infrastructure?</dt>
-                <dd class="col-sm-9">Yes, one or more Bluetooth receivers must be in range (~10m) to decode and process the DirAct transmissions.</dd>
+                <dd class="col-sm-9">Yes, one or more <i class="fab fa-bluetooth"></i> Bluetooth receivers must be in range (~10m) to decode and process the DirAct transmissions.</dd>
               </dl>
             </div>
           </div>
@@ -204,7 +204,7 @@
           <!-- DirAct-capable devices -->
           <h2 class="mt-4"> DirAct-capable devices </h2>
           <p class="lead"> DirAct can run on standard battery-powered beacons and other Bluetooth Low Energy devices </p>
-          <p> Open source, MIT-licensed versions of the DirAct software written in JavaScript are maintained for Espruino devices, and are available at <a href="https://github.com/reelyactive/diract" target="_blank">github.com/reelyactive/diract</a>. </p>
+          <p> Open source, <i class="fab fa-osi"></i> MIT-licensed versions of the DirAct software written in <i class="fab fa-js"></i> JavaScript are maintained for Espruino devices, and are available on our <i class="fab fa-github"></i> GitHub at <a href="https://github.com/reelyactive/diract" target="_blank">github.com/reelyactive/diract</a>. </p>
           <p> The following tutorials provide step-by-step instructions to program devices with DirAct software: </p>
           <ul class="list-unstyled">
             <li class="media my-2">
@@ -236,7 +236,7 @@
           <!-- Getting the physics off our chest -->
           <h2 class="mt-4"> Getting the physics off our chest </h2>
           <p class="lead"> Never (p)underestimate the importance of location, location, location! </p>
-          <p> Anyone who has attempted precise ranging or real-time location using only the signal strength of Bluetooth (or other 2.4GHz signals) should question the effectiveness of this approach.  That is because <em>2.4GHz signals are attenuated by water,</em> which makes up over half of the human body.  In other words: </p>
+          <p> Anyone who has attempted precise ranging or real-time location using only the <i class="fas fa-signal"></i> signal strength of <i class="fab fa-bluetooth"></i> Bluetooth (or other 2.4GHz signals) should question the effectiveness of this approach.  That is because <em>2.4GHz signals are attenuated by water,</em> which makes up over half of the <i class="fas fa-male"></i> human body.  In other words: </p>
           <blockquote class="blockquote text-right">
             <p class="mb-0"> Depending on where a transceiver is worn on the human body will greatly affect the signal strength of packets transmitted to, or received from, devices in proximity. </p>
             <footer class="blockquote-footer"> The laws of Physics </footer>
@@ -245,7 +245,7 @@
             <img src="images/diract-physics.gif" class="img-fluid">
             <figcaption class="figure-caption text-right">DirAct uses physical constraints to its advantage as a chest-worn badge</figcaption>
           </figure>
-          <p> DirAct <em>(which is derived from <b>Dir</b>ected inter<b>Act</b>ion)</em> takes advantage of the attenuating effect of the human body when it is <b>implemented as a chest-worn badge</b>.  In this case, face-to-face interactions are clearly distinguished by relative signal strength alone. </p>
+          <p> DirAct <em>(which is derived from <b>Dir</b>ected inter<b>Act</b>ion)</em> takes advantage of the attenuating effect of the human body when it is <b>implemented as a chest-worn badge</b>.  In this case, <i class="fas fa-user-friends"></i> face-to-face interactions are clearly distinguished by <em>relative</em> <i class="fas fa-signal"></i> signal strength alone. </p>
           <!-- DirAct specification -->
           <h2 class="mt-4"> DirAct specification </h2>
           <p class="lead"> The implementation of DirAct </p>
