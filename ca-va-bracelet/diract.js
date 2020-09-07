@@ -11,7 +11,6 @@ const INSTANCE_ID = [ 0x00, 0x00, 0x00, 0x01 ];
 const NAMESPACE_FILTER_ID = [ 0xc0, 0xde, 0xb1, 0x0e, 0x1d,
                               0xd1, 0xe0, 0x1b, 0xed, 0x0c ];
 const EXCITER_INSTANCE_IDS = new Uint32Array([ 0xe8c17e45 ]);
-const RESETTER_INSTANCE_IDS = new Uint32Array([ 0x4e5e77e4 ]);
 const PROXIMITY_RSSI_THRESHOLD = -65;
 const PROXIMITY_LED_RSSI_THRESHOLD = -65;
 const PROXIMITY_TABLE_SIZE = 8;
@@ -23,12 +22,10 @@ const PROXIMITY_PACKET_INTERVAL_MILLISECONDS = 400;
 const DIGEST_PACKET_INTERVAL_MILLISECONDS = 100;
 const DIGEST_TIME_CYCLE_THRESHOLD = 86400;
 const EXCITER_HOLDOFF_SECONDS = 60;
-const ENABLE_ACCELEROMETER = false;  // Enable on Puck.js v2 only!
-const ENABLE_BUTTON = true;
+const ENABLE_BUTTON = false;
 const BLINK_ON_PROXIMITY = true;
 const BLINK_ON_DISTANCING = true;
 const BLINK_ON_DIGEST = true;
-const BLINK_ON_RESET = true;
 const LED_BLINK_MILLISECONDS = 80;
 
 
@@ -52,9 +49,6 @@ const MAX_BATTERY_VOLTAGE = 3.0;
 const MIN_BATTERY_VOLTAGE = 2.0;
 const MAX_RSSI_TO_ENCODE = -28;
 const MIN_RSSI_TO_ENCODE = -92;
-const MAX_ACCELERATION_TO_ENCODE = 2;
-const MAX_ACCELERATION_MAGNITUDE = 0x1f;
-const ACCELERATION_UNITS_PER_G = 8192;
 const INVALID_ACCELERATION_CODE = 0x20;
 const SCAN_OPTIONS = {
     filters: [
@@ -81,7 +75,6 @@ let sensorData = [ 0x82, 0x08, 0x3f ];
 let cyclicCount = 0;
 let lastDigestTime = 0;
 let isExciterPresent = false;
-let isResetterPresent = false;
 let isProximityDetected = false;
 let isSleeping = false;
 let initiateSleep = false;
@@ -94,7 +87,6 @@ function observe() {
   proximityInstances.fill(DUMMY_INSTANCE_ID);         // Reset proximity
   proximityRssis.fill(DUMMY_RSSI);                    //   table data
   isExciterPresent = false;
-  isResetterPresent = false;
 
   if(initiateSleep) {
     return sleep();
@@ -125,17 +117,7 @@ function broadcast() {
   let isExcited = isExciterPresent &&
                   ((currentTime - lastDigestTime) > EXCITER_HOLDOFF_SECONDS);
 
-  if(isResetterPresent) {
-    if(BLINK_ON_RESET) {
-      blink(LED3, LED_BLINK_MILLISECONDS);
-      blink(LED2, LED_BLINK_MILLISECONDS);
-    }
-    setTime(0);
-    lastDigestTime = 0;
-    resetDigest();
-    broadcastProximity(sortedProximityIndices);
-  }
-  else if(isExcited) {
+  if(isExcited) {
     let sortedDigestIndices = getSortedIndices(digestCounts);
     compileDigest();
     broadcastDigest(sortedDigestIndices, 0);
@@ -188,7 +170,7 @@ function broadcastDigest(sortedIndices, pageNumber) {
       resetDigest();
     }
     if(BLINK_ON_DIGEST) {
-      blink(LED3, LED_BLINK_MILLISECONDS);
+      blink(D5, LED_BLINK_MILLISECONDS); // Blue = digest
     }
   }
   else {
@@ -254,9 +236,6 @@ function handleEddystoneUidDevice(serviceData, rssi) {
 
   if(EXCITER_INSTANCE_IDS.indexOf(unsignedInstanceId) >= 0) {
     isExciterPresent = true;
-  }
-  else if(RESETTER_INSTANCE_IDS.indexOf(unsignedInstanceId) >= 0) {
-    isResetterPresent = true;
   }
   else {
     updateProximityTable(instanceId, rssi);
@@ -399,10 +378,10 @@ function compileProximityData(sortedIndices) {
   data[1] = (cyclicCount << 5) + (data.length - 2);
 
   if(isProximityDetected && !isNewProximityDetected && BLINK_ON_DISTANCING) {
-    blink(LED2, LED_BLINK_MILLISECONDS); // Green
+    blink(D4, LED_BLINK_MILLISECONDS); // Green
   }
   else if(isNewProximityDetected && BLINK_ON_PROXIMITY) {
-    blink(LED1, LED_BLINK_MILLISECONDS); // Red
+    blink(D3, LED_BLINK_MILLISECONDS); // Red
   }
   isProximityDetected = isNewProximityDetected;
   
@@ -492,34 +471,6 @@ function encodeBatteryPercentage() {
 
 
 /**
- * Encode the acceleration.
- * @return {Array} The encoded acceleration [ x, y, z ].
- */
-function encodeAcceleration() {
-  let encodedAcceleration = { x: INVALID_ACCELERATION_CODE,
-                              y: INVALID_ACCELERATION_CODE,
-                              z: INVALID_ACCELERATION_CODE };
-
-  if(ENABLE_ACCELEROMETER) {
-    let acceleration = Puck.accel().acc;
-    for(let axis in acceleration) {
-      let magnitude = acceleration[axis] / ACCELERATION_UNITS_PER_G;
-      let encodedMagnitude = Math.min(MAX_ACCELERATION_MAGNITUDE,
-                                      Math.round(MAX_ACCELERATION_MAGNITUDE *
-                                                 (Math.abs(magnitude) /
-                                                 MAX_ACCELERATION_TO_ENCODE)));
-      if(magnitude < 0) {
-        encodedMagnitude = 0x3f - encodedMagnitude;
-      }
-      encodedAcceleration[axis] = encodedMagnitude;
-    }
-  }
-
-  return encodedAcceleration;
-}
-
-
-/**
  * Update the sensor data (battery & acceleration) for the advertising packet.
  */
 function updateSensorData() {
@@ -528,14 +479,9 @@ function updateSensorData() {
   if(cyclicCount === 0) {
     encodedBattery = encodeBatteryPercentage();
   }
-
-  encodedAcceleration = encodeAcceleration();
-
-  sensorData[0] = ((encodedAcceleration.x << 2) & 0xfc) |
-                  ((encodedAcceleration.y >> 4) & 0x3f);
-  sensorData[1] = ((encodedAcceleration.y << 4) & 0xf0) |
-                  ((encodedAcceleration.z >> 2) & 0x0f);
-  sensorData[2] = ((encodedAcceleration.z << 6) & 0xc0) |
+  
+  // TODO: other versions of ca-va-bracelet will have accelerometer
+  sensorData[2] = ((INVALID_ACCELERATION_CODE << 6) & 0xc0) |
                   (encodedBattery & 0x3f);
 }
 
@@ -560,8 +506,8 @@ function getSortedIndices(unsortedArray) {
  * @param {Number} milliseconds The number of milliseconds to remain lit.
  */
 function blink(led, milliseconds) {
-  led.write(true);
-  setTimeout(function(led) { led.write(false); }, milliseconds, led);
+  led.write(false);
+  setTimeout(function(led) { led.write(true); }, milliseconds, led);
 }
 
 
@@ -580,16 +526,26 @@ function sleep() {
  */
 function toggleSleepWake() {
   if(isSleeping) {
-    blink(LED2, LED_BLINK_MILLISECONDS); // Green = wake
+    blink(D4, LED_BLINK_MILLISECONDS); // Green = wake
     isSleeping = false;
     NRF.wake();
     observe();
   }
   else if(!initiateSleep) {
-    blink(LED1, LED_BLINK_MILLISECONDS); // Red = sleep
+    blink(D3, LED_BLINK_MILLISECONDS); // Red = sleep
     initiateSleep = true;
   }
 }
+
+
+// LEDs use reverse logic on ca-va-bracelet v0.1, operate pins as open drain
+//   so that logic-1 is open circuit and logic-0 is GND.
+pinMode(D5, 'opendrain');
+D5.write(true);
+pinMode(D4, 'opendrain');
+D4.write(true);
+pinMode(D3, 'opendrain');
+D3.write(true);
 
 
 // Begin DirAct execution and watch button to toggle between sleep/wake
