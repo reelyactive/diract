@@ -1,13 +1,13 @@
 DirAct
 ======
 
-Who is interacting with whom?  Who is interacting with what?
+__Who is interacting with whom?  Who is interacting with what?__
 
-Proximity interaction detection software for Bluetooth beacons jointly developed by [reelyActive](https://www.reelyactive.com) and [Code Blue Consulting](https://consultcodeblue.com/).  Written in JavaScript and runs on [Espruino devices](https://shop.espruino.com/ble) and Espruino-capable devices with the nRF52 series microcontroller which can easily be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).
+Proximity interaction detection software for Bluetooth badges, wearables and beacons jointly developed by [reelyActive](https://www.reelyactive.com) and [Code Blue Consulting](https://consultcodeblue.com/).  Written in JavaScript and runs on [Espruino devices](https://shop.espruino.com/ble) and Espruino-capable devices with the nRF52 series microcontroller which can easily be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).
 
 ![DirAct Logo](https://reelyactive.github.io/diract/images/diract-logo-black.png)
 
-Learn more about __DirAct__ at [reelyactive.github.io/diract](https://reelyactive.github.io/diract/) and the proximity identification use case at [getpareto.com/use-cases/interaction-detection](https://getpareto.com/use-cases/interaction-detection/).
+Learn more about __DirAct__ at [reelyactive.com/diract](https://www.reelyactive.com/diract/) and the proximity identification use case at [reelyactive.com/use-cases/interaction-detection](https://www.reelyactive.com/use-cases/interaction-detection/).
 
 
 Programming Espruino devices with DirAct
@@ -43,7 +43,7 @@ License
 
 MIT License
 
-Copyright (c) 2019-2020 [reelyActive](https://www.reelyactive.com)
+Copyright (c) 2019-2021 [reelyActive](https://www.reelyactive.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
