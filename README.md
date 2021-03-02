@@ -28,6 +28,17 @@ Code is available in the __banglejs__ folder of [release-0.1](https://github.com
 Code is available in the __ca-va-bracelet__ folder of this repository.  See the [ca-va-bracelet](https://upverter.com/profile/cavabracelet/) open hardware project based on the MDBT42Q module, which runs Espruino.
 
 
+Programming other devices with DirAct
+-------------------------------------
+
+The following devices which can be programmed to run Espruino are supported.
+
+
+### micro:bit v2
+
+Code for the BBC micro:bit v2 (the version with the microphone, speaker and a nRF52833 microcontroller) is available in the __microbit-v2__ folder of this repository.  See the [Espruino micro:bit guide](https://www.espruino.com/MicroBit) for programming instructions.
+
+
 DirAct Identifiers
 ------------------
 
