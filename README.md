@@ -19,6 +19,10 @@ The following Espruino devices are supported.
 
 Code is available in the __puckjs__ folder of this repository.  See our [Develop BLE applications with Puck.js](https://reelyactive.github.io/diy/puckjs-dev/) tutorial for detailed programming instructions.
 
+### Pixl.js
+
+Code is available in the __pixljs__ folder of this repository.
+
 ### Bangle.js
 
 Code is available in the __banglejs__ folder of [release-0.1](https://github.com/reelyactive/diract/tree/release-0.1) of this repository.  See our [Develop BLE applications with Bangle.js](https://reelyactive.github.io/diy/banglejs-dev/) tutorial for detailed programming instructions.
