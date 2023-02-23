@@ -7,7 +7,8 @@
 
 
 // User-configurable constants
-const INSTANCE_ID = [ 0x00, 0x00, 0x00, 0x01 ];
+const INSTANCE_ID = null; // null = auto-generated.  Or specify ID with:
+                          // new Uint8Array([ 0x00, 0x00, 0x00, 0x01 ]);
 const NAMESPACE_FILTER_ID = [ 0x49, 0x6f, 0x49, 0x44, 0x44,
                               0x69, 0x72, 0x41, 0x63, 0x74 ];
 const EXCITER_INSTANCE_IDS = new Uint32Array([ 0xe8c17e45 ]);
@@ -64,6 +65,7 @@ const DUMMY_RSSI = MIN_RSSI_TO_ENCODE;
 
 
 // Global variables
+let instanceId;
 let proximityInstances = new Uint32Array(PROXIMITY_TABLE_SIZE);
 let proximityRssis = new Int8Array(PROXIMITY_TABLE_SIZE);
 let digestInstances = new Uint32Array(DIGEST_TABLE_SIZE);
@@ -366,7 +368,7 @@ function resetDigest() {
 function compileProximityData(sortedIndices) {
   let data = [
     DIRACT_PROXIMITY_FRAME, DIRACT_DEFAULT_COUNT_LENGTH,
-    INSTANCE_ID[0], INSTANCE_ID[1], INSTANCE_ID[2], INSTANCE_ID[3],
+    instanceId[0], instanceId[1], instanceId[2], instanceId[3],
     sensorData[0], sensorData[1], sensorData[2]
   ];
   let isNewProximityDetected = false;
@@ -420,7 +422,7 @@ function compileDigestData(sortedIndices, digestPage) {
 
   let data = [
     DIRACT_DIGEST_FRAME, DIRACT_DEFAULT_COUNT_LENGTH,
-    INSTANCE_ID[0], INSTANCE_ID[1], INSTANCE_ID[2], INSTANCE_ID[3],
+    instanceId[0], instanceId[1], instanceId[2], instanceId[3],
     digestStatus, digestTime[1], digestTime[2]
   ];
   let pageIndex = digestPage * 3;
@@ -533,6 +535,18 @@ function getSortedIndices(unsortedArray) {
 
 
 /**
+ * Create an instance ID from the least-significant 2-bytes of the advAddress.
+ * @return {Uint8Array} The automatically-generated instance ID.
+ */
+function autoInstanceId() {
+  let address = NRF.getAddress();
+
+  return new Uint8Array([ 0x00, 0x00, parseInt(address.substring(12, 14), 16),
+                          parseInt(address.substring(15, 17), 16) ]);
+}
+
+
+/**
  * Put the nRF to sleep.
  */
 function sleep() {
@@ -562,6 +576,7 @@ require("Font6x8").add(Graphics);
 setTime(0);
 resetDigest();
 E.showMenu(menu);
+instanceId = INSTANCE_ID || autoInstanceId();
 observe();
 if(ENABLE_BUTTON) {
   setWatch(toggleSleepWake, BTN, {edge: "rising", repeat: true, debounce: 50});
