@@ -1,13 +1,13 @@
 DirAct
 ======
 
-__Who is interacting with whom?  Who is interacting with what?__
-
-Proximity interaction detection software for Bluetooth badges, wearables and beacons jointly developed by [reelyActive](https://www.reelyactive.com) and [Code Blue Consulting](https://consultcodeblue.com/).  Written in JavaScript and runs on [Espruino devices](https://shop.espruino.com/ble) and Espruino-capable devices with the nRF52 series microcontroller which can easily be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).
+__DirAct__ is embedded software for proximity interaction detection: _Who is interacting with whom/what?_.  It runs on Bluetooth Low Energy wearables, badges and beacons.
 
 ![DirAct Logo](https://reelyactive.github.io/diract/images/diract-logo-black.png)
 
-Learn more about __DirAct__ at [reelyactive.com/diract](https://www.reelyactive.com/diract/) and the proximity identification use case at [reelyactive.com/use-cases/interaction-detection](https://www.reelyactive.com/use-cases/interaction-detection/).
+__DirAct__ is written in JavaScript for [Espruino](https://www.espruino.com/), which runs on just about any device with a Nordic nRF52 microcontroller, and can be programmed through the web browser using the [Espruino Web IDE](https://www.espruino.com/ide/).  __DirAct__ advertising packets can be decoded by the [advlib-ble-manufacturers](https://github.com/reelyactive/advlib-ble-manufacturers/) library which is part of reelyActive's [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/) open source middleware suite.
+
+Learn more at [reelyactive.com/diract](https://www.reelyactive.com/diract/) and at [reelyactive.github.io/diract](https://reelyactive.github.io/diract/).
 
 
 Programming Espruino devices with DirAct
@@ -17,7 +17,7 @@ The following Espruino devices are supported.
 
 ### Puck.js
 
-Code is available in the __puckjs__ folder of this repository.  See our [Develop BLE applications with Puck.js](https://reelyactive.github.io/diy/puckjs-dev/) tutorial for detailed programming instructions.
+Code is available in the __puckjs__ folder of this repository.  See our [Puck.js Development Guide](https://reelyactive.github.io/diy/puckjs-dev/) for detailed programming instructions.
 
 ### Pixl.js
 
@@ -25,7 +25,9 @@ Code is available in the __pixljs__ folder of this repository.
 
 ### Bangle.js
 
-Code is available in the __banglejs__ folder of [release-0.1](https://github.com/reelyactive/diract/tree/release-0.1) of this repository.  See our [Develop BLE applications with Bangle.js](https://reelyactive.github.io/diy/banglejs-dev/) tutorial for detailed programming instructions.
+__DirAct__ is available directly from the [Bangle App Loader](https://banglejs.com/apps/#diract).  For development, see our [Bangle.js Development Guide](https://reelyactive.github.io/diy/banglejs-dev/) tutorial for detailed programming instructions.
+
+Code for the original Bangle.js v1 is available in the __banglejs__ folder of [release-0.1](https://github.com/reelyactive/diract/tree/release-0.1) of this repository.
 
 ### ca-va-bracelet
 
@@ -46,11 +48,21 @@ Code for the BBC micro:bit v2 (the version with the microphone, speaker and a nR
 DirAct Identifiers
 ------------------
 
-Each __DirAct__ device shall use a unique INSTANCE_ID.  Set this user-configurable constant to a unique value before programming each device such that __DirAct__ devices may uniquely identify themselves and their peers.
+Each __DirAct__ device shall identify itself with a unique INSTANCE_ID.  By default, the two least-significant bytes of the nRF advertiser address are used as the unique INSTANCE_ID, unless a specific ID is entered.
 
-__DirAct__ devices also recognise [Eddystone-UID](https://github.com/google/eddystone/tree/master/eddystone-uid#eddystone-uid) beacons which use a _Namespace ID_ which matches the NAMESPACE_FILTER_ID.  Such beacons are then uniquely identified by the lower 32 bits of their _Instance ID_.
+__DirAct__ devices also recognise beacons which transmit an [InteroperaBLE Identifier](https://reelyactive.github.io/interoperable-identifier/) with the DirAct entity UUID (496f4944446972416374).
 
-__DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), which co-developed __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
+__DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), which co-developed __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct embedded software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
+
+
+Project History
+---------------
+
+__DirAct__ is jointly developed by [reelyActive](https://www.reelyactive.com) and [Code Blue Consulting](https://consultcodeblue.com/).  The code was open sourced as v0.x in 2019.
+
+__DirAct__ v1.x, released at the start of the COVID-19 pandemic, added a digest feature to facilitate contact tracing in environments with sparse infrastructure.
+
+__DirAct__ v2.x, released in 2023, fully adopts the [InteroperaBLE Identifier](https://reelyactive.github.io/interoperable-identifier/), and supports the digest and non-digest variants independently as diract-digest.js and diract.js, respectively.
 
 
 Contributing
