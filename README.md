@@ -1,7 +1,7 @@
 DirAct
 ======
 
-__DirAct__ is embedded software for proximity interaction detection: _Who is interacting with whom/what?_.  It runs on Bluetooth Low Energy wearables, badges and beacons.
+__DirAct__ is embedded software for proximity interaction detection: _Who is interacting with whom/what?_  The lightweight code runs on Bluetooth Low Energy wearables, badges and beacons.
 
 ![DirAct Logo](https://reelyactive.github.io/diract/images/diract-logo-black.png)
 
@@ -48,11 +48,21 @@ Code for the BBC micro:bit v2 (the version with the microphone, speaker and a nR
 DirAct Identifiers
 ------------------
 
-Each __DirAct__ device shall identify itself with a unique INSTANCE_ID.  By default, the two least-significant bytes of the nRF advertiser address are used as the unique INSTANCE_ID, unless a specific ID is entered.
+Each __DirAct__ device shall identify itself with a unique INSTANCE_ID.  By default, the two least-significant bytes of the nRF advertiser address are used as the unique INSTANCE_ID, unless a specific ID is entered, as below:
 
-__DirAct__ devices also recognise beacons which transmit an [InteroperaBLE Identifier](https://reelyactive.github.io/interoperable-identifier/) with the DirAct entity UUID (496f4944446972416374).
+```javascript
+// Auto-generate a unique INSTANCE_ID:
+const INSTANCE_ID = null;
+```
 
-__DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), which co-developed __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct embedded software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
+```javascript
+// Specify INSTANCE_ID of 00000001
+const INSTANCE_ID = new Uint8Array([ 0x00, 0x00, 0x00, 0x01 ]);
+```
+
+__DirAct__ devices recognise not only their peers, but also beacons which transmit an [InteroperaBLE Identifier](https://reelyactive.github.io/interoperable-identifier/) with the DirAct entity UUID (496f4944446972416374).
+
+__DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), the co-developers of __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct embedded software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
 
 
 Project History
