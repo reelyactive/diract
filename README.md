@@ -53,6 +53,18 @@ __DirAct__ devices also recognise [Eddystone-UID](https://github.com/google/eddy
 __DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), which co-developed __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
 
 
+Contributing
+------------
+
+Discover [how to contribute](CONTRIBUTING.md) to this open source project which upholds a standard [code of conduct](CODE_OF_CONDUCT.md).
+
+
+Security
+--------
+
+Consult our [security policy](SECURITY.md) for best practices using this open source software and to report vulnerabilities.
+
+
 License
 -------
 
