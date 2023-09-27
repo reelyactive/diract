@@ -39,7 +39,6 @@ Programming other devices with DirAct
 
 The following devices which can be programmed to run Espruino are supported.
 
-
 ### micro:bit v2
 
 Code for the BBC micro:bit v2 (the version with the microphone, speaker and a nRF52833 microcontroller) is available in the __microbit-v2__ folder of this repository.  See the [Espruino micro:bit guide](https://www.espruino.com/MicroBit) for programming instructions.
@@ -63,6 +62,18 @@ const INSTANCE_ID = new Uint8Array([ 0x00, 0x00, 0x00, 0x01 ]);
 __DirAct__ devices recognise not only their peers, but also beacons which transmit an [InteroperaBLE Identifier](https://reelyactive.github.io/interoperable-identifier/) with the DirAct entity UUID (496f4944446972416374).
 
 __DirAct__ devices transmit advertising packets which include _manufacturer specific data_ using the [Bluetooth-SIG-assigned Company Identifier](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) of Code Blue Consulting (0x0583), the co-developers of __DirAct__.  Developers may continue to use this company identifier for experimental and educational purposes.  However, __company identifier 0x0583 may NOT be used for commercial use of the DirAct embedded software__.  An entity may [request a company identifier from the Bluetooth SIG](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/) and use this instead.  [Contact us](https://www.reelyactive.com/contact/) if in doubt.
+
+
+DirAct filters on AOS 8.x
+-------------------------
+
+HPE Aruba Networking access points running AOS 8.x offer a DirAct filter for forwarding BLE Data in their IoT WebSocket Interface.  Note that the DirAct checkbox has the behaviour of forwarding _only_ __DirAct__ digest packets.
+
+![DirAct AOS8 filtering](https://reelyactive.github.io/diract/images/diract-aos8-filtering.png)
+
+In order to forward _both_ __DirAct__ proximity _and_ digest packets, instead include a Company Identifier filter with the value `0583`.
+
+See our [Configure an Aruba Instant AP](https://reelyactive.github.io/diy/aruba-instant-config/) tutorial for more details on this integration.
 
 
 Project History
