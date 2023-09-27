@@ -71,7 +71,9 @@ HPE Aruba Networking access points running AOS 8.x offer a DirAct filter for for
 
 ![DirAct AOS8 filtering](https://reelyactive.github.io/diract/images/diract-aos8-filtering.png)
 
-In order to forward both __DirAct__ proximity and digest packets, instead include a Company Identifier filter with the value `0583`.
+In order to forward _both_ __DirAct__ proximity _and_ digest packets, instead include a Company Identifier filter with the value `0583`.
+
+See our [Configure an Aruba Instant AP](https://reelyactive.github.io/diy/aruba-instant-config/) tutorial for more details on this integration.
 
 
 Project History
