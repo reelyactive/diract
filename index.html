@@ -6,19 +6,11 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
           content="Proximity interaction detection software for Bluetooth beacons with open source JavaScript versions for Espruino devices.">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49659454-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-49659454-2');
-    </script>
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="style/reelyactive.css">
+    <link rel="stylesheet" href="style/bootstrappyactive.min.css">
     <title> DirAct </title>
     <!----- Structured, linked metadata (JSON-LD & Schema.org) ----->
     <script type="application/ld+json">
-    {
+    [{
       "@context": "https://schema.org", 
       "@type": "SoftwareApplication",
       "name": "DirAct",
@@ -33,87 +25,109 @@
         "@type": "Organization",
         "url": "https://www.reelyactive.com"
       }
-    }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "reelyActive Developers",
+        "item": "https://reelyactive.github.io"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "DirAct",
+        "item": "https://reelyactive.github.io/diract/"
+      }]
+    }]
     </script>
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-reelyactive bg-reelyactive">
-      <a class="navbar-brand" href="https://www.reelyactive.com/">
-        <img src="images/reelyactive-logo-nav.png" width="165" height="30"
-             alt="reelyActive">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarItems" aria-controls="navbarItems"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarItems">
-        <!-- Left-aligned navigation items -->
-        <ul class="navbar-nav mr-auto"></ul>
-        <!-- Right-aligned navigation items -->
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown"
-               role="button" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
-              <i class="fas fa-question-circle"></i>
-            </a>
-            <!-- Info about tracking and open source software/licenses -->
-            <div class="dropdown-menu dropdown-menu-right"
-                 aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"
-                 href="https://www.reelyactive.com/how-we-observe/#digital">
-                <i class="fas fa-mouse-pointer"></i>
-                Page view tracking (gtag.js) &nbsp;
-                <span class="badge badge-warning">
-                  <i class="fas fa-user-tag"></i>
-                </span>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white
+                shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="images/reelyactive-developers-logo-nav.png" width="135"
+               height="30" alt="reelyActive Developers">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarItems" aria-controls="navbarItems"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarItems">
+          <!-- Left-aligned navigation items -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <!-- Right-aligned navigation items -->
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarInfoDropdown"
+                 role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false">
+                <i class="fas fa-question-circle"></i>
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" target="_blank"
-                 href="https://getbootstrap.com" >
-                <i class="fab fa-bootstrap"></i>
-                Bootstrap 4 &nbsp;
-                <span class="badge badge-light">
-                  <i class="fab fa-osi"></i> MIT
-                </span>
-              </a>
-              <a class="dropdown-item" target="_blank"
-                 href="https://fontawesome.com" >
-                <i class="fab fa-font-awesome"></i>
-                Font Awesome (Free) &nbsp;
-                <span class="badge badge-light">
-                  <i class="fab fa-creative-commons"></i>
-                  <i class="fab fa-osi"></i> MIT
-                </span>
-              </a>
-              <a class="dropdown-item" target="_blank"
-                 href="https://jquery.com" >
-                <i class="fab fa-js"></i>
-                JQuery &nbsp;
-                <span class="badge badge-light">
-                  <i class="fab fa-osi"></i> MIT
-                </span>
-              </a>
-              <a class="dropdown-item" target="_blank"
-                 href="https://github.com/reelyactive/web-style-guide/" >
-                <i class="fas fa-code"></i>
-                Web Style Guide &nbsp;
-                <span class="badge badge-light">
-                  <i class="fab fa-osi"></i> MIT
-                </span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" target="_blank"
-                 href="https://www.reelyactive.com/made-in-montreal/" >
-                <i class="fab fa-canadian-maple-leaf"></i>
-                Made in Montr&eacute;al &nbsp;
-                <i class="fas fa-city"></i>
-              </a>
-            </div>
-          </li>
-        </ul>
+              <!-- Info about tracking and open source software/licenses -->
+              <ul class="dropdown-menu dropdown-menu-end shadow"
+                   aria-labelledby="navbarInfoDropdown">
+                <li>
+                  <a class="dropdown-item"
+                     href="https://www.reelyactive.com/how-we-observe/#digital">
+                    <i class="fas fa-mouse-pointer"></i>
+                    Privacy-centric metrics
+                    (<i class="fab fa-cloudflare"></i> beacon.js) &nbsp;
+                    <span class="badge bg-warning animate-breathing">
+                      <i class="fas fa-user-tag"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" target="_blank"
+                     href="https://getbootstrap.com" >
+                    <i class="fab fa-bootstrap"></i>
+                    Bootstrap 5 &nbsp;
+                    <span class="badge bg-light text-dark">
+                      <i class="fab fa-osi"></i> MIT
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" target="_blank"
+                     href="https://fontawesome.com" >
+                    <i class="fab fa-font-awesome"></i>
+                    Font Awesome (Free) &nbsp;
+                    <span class="badge bg-light text-dark">
+                      <i class="fab fa-creative-commons"></i>
+                      <i class="fab fa-osi"></i> MIT
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" target="_blank"
+                     href="https://github.com/reelyactive/web-style-guide/" >
+                    <i class="fas fa-code"></i>
+                    Web Style Guide &nbsp;
+                    <span class="badge bg-light text-dark">
+                      <i class="fab fa-osi"></i> MIT
+                   </span>
+                  </a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" target="_blank"
+                     href="https://www.reelyactive.com/made-in-montreal/" >
+                    <i class="fab fa-canadian-maple-leaf"></i>
+                    Made in Montr&eacute;al &nbsp;
+                    <i class="fas fa-city"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <!-- Content -->
@@ -131,55 +145,55 @@
                 The TL;DR
                 <small class="text-muted"> (Too Long; Didn't Read) </small>
               </h2>
-              <p class="lead"> Learn how DirAct detects real-time proximity interactions, and why. </p>
+              <p class="lead"> Learn how DirAct detects real-time <i class="fas fa-people-arrows"></i> proximity interactions, and why. </p>
               <hr>
               <dl class="row">
-                <dt class="col-sm-3">Why interactions?</dt>
-                <dd class="col-sm-9">In many use cases, knowing who is <em>interacting with</em> who (or what) is superior to knowing <em>where</em> exactly they are.</dd>
-                <dt class="col-sm-3">Why beacons?</dt>
-                <dd class="col-sm-9"><i class="fab fa-bluetooth"></i> Bluetooth beacons are cost-effective radio transceivers.  Many third-party beacons can be programmed with DirAct.</dd>
-                <dt class="col-sm-3">Any infrastructure?</dt>
-                <dd class="col-sm-9">Yes, one or more <i class="fab fa-bluetooth"></i> Bluetooth receivers must be in range (~10m) to decode and process the DirAct transmissions.</dd>
+                <dt class="col-sm-3"> Why interactions? </dt>
+                <dd class="col-sm-9"> In many use cases, knowing who is <em>interacting with</em> who (or what) is superior to knowing <em>where</em> exactly they are. </dd>
+                <dt class="col-sm-3"> Why beacons? </dt>
+                <dd class="col-sm-9"> <i class="fab fa-bluetooth"></i> Bluetooth beacons are cost-effective radio transceivers.  Many third-party beacons can be programmed with DirAct. </dd>
+                <dt class="col-sm-3"> Any infrastructure? </dt>
+                <dd class="col-sm-9"> Yes, one or more <i class="fab fa-bluetooth"></i> Bluetooth receivers must be in range (~10m) to decode and process the DirAct transmissions. </dd>
               </dl>
             </div>
           </div>
-          <div class="embed-responsive embed-responsive-16by9">
+          <div class="ratio ratio-16x9 mt-5">
             <iframe src="https://www.youtube.com/embed/9iyQP-6noyQ?rel=0&controls=0&showinfo=0&modestbranding" frameborder="0" allowfullscreen></iframe>
           </div>  
           <!-- How DirAct works -->
-          <h2 class="mt-4"> How DirAct works </h2>
+          <h2 class="mt-5"> How DirAct works </h2>
           <p class="lead"> DirAct observes what's in proximity and advertises this data for any device in range to interpret </p>
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="observingtab" data-toggle="tab"
-                 href="#observing" role="tab" aria-controls="observing"
-                 aria-selected="true">
+              <button class="nav-link active" id="observingtab"
+                 data-bs-toggle="tab" data-bs-target="#observing" type="button"
+                 role="tab" aria-controls="observing" aria-selected="true">
                 <i class="fas fa-search"></i> Observing
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="rankingtab" data-toggle="tab"
-                 href="#ranking" role="tab" aria-controls="ranking"
-                 aria-selected="false">
-                <i class="fas fa-list-ol"></i> Ranking
-              </a>
+              <button class="nav-link" id="rankingtab" data-bs-toggle="tab"
+                 data-bs-target="#ranking" type="button" role="tab"
+                 aria-controls="ranking" aria-selected="false">
+                <i class="fas fa-filter"></i> Ranking
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="advertisingtab" data-toggle="tab"
-                 href="#advertising" role="tab" aria-controls="advertising"
-                 aria-selected="false">
+              <button class="nav-link" id="advertisingtab" data-bs-toggle="tab"
+                 data-bs-target="#advertising" type="button" role="tab"
+                 aria-controls="advertising" aria-selected="false">
                 <i class="fas fa-wifi"></i> Advertising
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="processingtab" data-toggle="tab"
-                 href="#processing" role="tab" aria-controls="processing"
-                 aria-selected="false">
-                <i class="fas fa-cogs"></i> Processing
-              </a>
+              <button class="nav-link" id="processingtab" data-bs-toggle="tab"
+                 data-bs-target="#processing" type="button" role="tab"
+                 aria-controls="processing" aria-selected="false">
+                <i class="fas fa-cog"></i> Processing
+              </button>
             </li>
           </ul>
-          <div class="tab-content tab-content-reelyactive">
+          <div class="tab-content tab-content-border">
             <div class="tab-pane fade show active" id="observing"
                  role="tabpanel" aria-labelledby="observingtab">
               <img src="images/how-diract-works-observing.png"
@@ -202,86 +216,80 @@
             </div>
           </div>
           <!-- DirAct-capable devices -->
-          <h2 class="mt-4"> DirAct-capable devices </h2>
+          <h2 class="mt-5"> DirAct-capable devices </h2>
           <p class="lead"> DirAct can run on standard battery-powered beacons and other Bluetooth Low Energy devices </p>
-          <p> Open source, <i class="fab fa-osi"></i> MIT-licensed versions of the DirAct software written in <i class="fab fa-js"></i> JavaScript are maintained for Espruino devices, and are available on our <i class="fab fa-github"></i> GitHub at <a href="https://github.com/reelyactive/diract" target="_blank">github.com/reelyactive/diract</a>. </p>
+          <p> Open source, <i class="fab fa-osi"></i> MIT-licensed versions of the DirAct software written in <i class="fab fa-js"></i> JavaScript are maintained for Espruino devices, and are available on our <i class="fab fa-github"></i> GitHub at <a href="https://github.com/reelyactive/diract" target="_blank"><i class="fas fa-external-link-alt"></i> github.com/reelyactive/diract</a>. </p>
           <p> The following tutorials provide step-by-step instructions to program devices with DirAct software: </p>
-          <ul class="list-unstyled">
-            <li class="media my-2">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
               <a href="https://reelyactive.github.io/diy/puckjs-dev/">
-                <img src="https://reelyactive.github.io/diy/puckjs-dev/images/icon.jpg"
-                     class="align-self-start mr-3">
+                <img src="https://reelyactive.github.io/diy/puckjs-dev/images/icon.jpg">
               </a>
-              <div class="media-body">
-                <a href="https://reelyactive.github.io/diy/puckjs-dev/">
-                  <h5 class="mt-0 mb-1">Develop BLE applications with Puck.js</h5>
-                </a>
-                Our step-by-step guide to program the open smart button with DirAct or other software.
-              </div>
             </li>
-            <li class="media my-2">
-              <a href="https://reelyactive.github.io/diy/banglejs-dev/">
-                <img src="https://reelyactive.github.io/diy/banglejs-dev/images/icon.jpg"
-                     class="align-self-start mr-3">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/puckjs-dev/">
+                <h5 class="mt-0 mb-1"> Puck.js Development Guide </h5>
               </a>
-              <div class="media-body">
-                <a href="https://reelyactive.github.io/diy/banglejs-dev/">
-                  <h5 class="mt-0 mb-1">Develop BLE applications with Bangle.js</h5>
-                </a>
-                Our step-by-step guide to program the open smartwatch with DirAct or other software.
-              </div>
+              Program the open smart button with DirAct or other embedded software.
             </li>
           </ul>
-          <p> <span class="badge badge-secondary"><i class="fas fa-info-circle"></i></span> &nbsp; DirAct has been successfully ported to mass-produced beacons, such as the Minew E8, based on the same popular nRF52 chipset used by Espruino devices. </p>
+          <ul class="list-group list-group-horizontal mb-4">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/banglejs-dev/">
+                <img src="https://reelyactive.github.io/diy/banglejs-dev/images/icon.jpg">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/banglejs-dev/">
+                <h5 class="mt-0 mb-1"> Bangle.js Development Guide </h5>
+              </a>
+              Program the open smartwatch with DirAct or other embedded software.
+            </li>
+          </ul>
+          <p> <span class="badge rounded-pill text-bg-primary"><i class="fas fa-info"></i></span> &nbsp; DirAct has been successfully ported to mass-produced beacons, such as the Minew E8, based on the same popular nRF52 chipset used by Espruino devices. </p>
           <!-- DirAct-compatible software -->
-          <h2 class="mt-4"> DirAct-compatible software </h2>
-          <p class="lead"> DirAct is tightly integrated with Pareto Anywhere open source software </p>
-          <!-- Pareto Anywhere -->
-          <div class="card my-4 bg-dark text-white">
-            <div class="row no-gutters">
-              <div class="col-md-4 my-auto">
-                <img src="images/pareto-anywhere-logo-white.png"
-                     class="card-img p-4">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Embrace the ambient data in <em>your</em> space</h5>
-                  <p class="card-text"><small>Pareto Anywhere is open source software that runs <em>anywhere</em> to digitally transform <em>any</em> space.</small></p>
-                  <div class="btn-toolbar">
-                    <a class="btn btn-secondary m-1"
-                       href="https://getpareto.com"> Learn More </a>
-                    <div class="dropdown">
-                      <a class="btn btn-outline-dark dropdown-toggle m-1"
-                         role="button" id="usecases"
-                         data-toggle="dropdown" aria-haspopup="true"
-                         aria-expanded="false"> Use Cases </a>
-                      <div class="dropdown-menu" aria-labelledby="usecases">
-                        <a href="https://getpareto.com/use-cases/occupancy-analytics/"
-                           class="dropdown-item"> Occupancy Analytics </a>
-                        <a href="https://getpareto.com/use-cases/personnel-tracking/"
-                           class="dropdown-item"> Personnel Tracking </a>
-                        <a href="https://getpareto.com/use-cases/asset-tracking/"
-                           class="dropdown-item"> Asset Tracking </a>
-                        <a href="https://getpareto.com/use-cases/environmental-sensing/"
-                           class="dropdown-item"> Environmental Sensing </a>
-                        <a href="https://getpareto.com/use-cases/interaction-detection/"
-                           class="dropdown-item"> Interaction Detection </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p> For a lightweight software implementation see <a href="https://github.com/reelyactive/diract-digester" target="_blank">diract-digester</a>. </p>
+          <h2 class="mt-4"> DirAct-compatible middleware </h2>
+          <p class="lead"> DirAct is tightly integrated with Pareto Anywhere open source middleware </p>
+          <p> The following tutorials provide step-by-step instructions to install and run Pareto Anywhere: </p>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/pareto-anywhere-pc/">
+                <img src="https://reelyactive.github.io/diy/pareto-anywhere-pc/images/icon.png">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/pareto-anywhere-pc/">
+                <h5 class="mt-0 mb-1"> Run Pareto Anywhere on a PC </h5>
+              </a>
+              Install and run Pareto Anywhere on a personal computer to make any physical space context-aware.
+            </li>
+          </ul>
+          <ul class="list-group list-group-horizontal mb-4">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/pareto-anywhere-pi/">
+                <img src="https://reelyactive.github.io/diy/pareto-anywhere-pi/images/icon.png">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/pareto-anywhere-pi/">
+                <h5 class="mt-0 mb-1"> Run Pareto Anywhere on a Pi </h5>
+              </a>
+              Install and run Pareto Anywhere on a Raspberry Pi to make any physical space context-aware.
+            </li>
+          </ul>
+          <p> For a lightweight software implementation see <a href="https://github.com/reelyactive/diract-digester" target="_blank"><i class="fab fa-github"></i>/diract-digester</a>. </p>
           <!-- Getting the physics off our chest -->
           <h2 class="mt-4"> Getting the physics off our chest </h2>
           <p class="lead"> Never (p)underestimate the importance of location, location, location! </p>
-          <p> Anyone who has attempted precise ranging or real-time location using only the <i class="fas fa-signal"></i> signal strength of <i class="fab fa-bluetooth"></i> Bluetooth (or other 2.4GHz signals) should question the effectiveness of this approach.  That is because <em>2.4GHz signals are attenuated by water,</em> which makes up over half of the <i class="fas fa-male"></i> human body.  In other words: </p>
-          <blockquote class="blockquote text-right">
-            <p class="mb-0"> Depending on where a transceiver is worn on the human body will greatly affect the signal strength of packets transmitted to, or received from, devices in proximity. </p>
-            <footer class="blockquote-footer"> The laws of Physics </footer>
-          </blockquote>
+          <p> Anyone who has attempted precise ranging or real-time location using only the <i class="fas fa-signal"></i> signal strength of <i class="fab fa-bluetooth"></i> Bluetooth (or other 2.4GHz signals) should question the effectiveness of this approach.  That is because <em>2.4GHz signals are attenuated by water,</em> which makes up over half of the <i class="fas fa-walking"></i> human body.  In other words: </p>
+          <figure class="text-end">
+            <blockquote class="blockquote">
+              <p> Depending on where a transceiver is worn on the human body will greatly affect the signal strength of packets transmitted to, or received from, devices in proximity. </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              The laws of Physics
+            </figcaption>
+          </figure>
           <figure class="figure">
             <img src="images/diract-physics.gif" class="img-fluid">
             <figcaption class="figure-caption text-right">DirAct uses physical constraints to its advantage as a chest-worn badge</figcaption>
@@ -303,69 +311,93 @@
             <div class="col-md-6">
               <img src="images/diract-logo-black.png" class="img-fluid">
             </div>
-            <div class="col-md-6 bg-reelyactive">
+            <div class="col-md-6 bg-black">
               <img src="images/diract-logo-white.png" class="img-fluid">
             </div>
           </div>
-          <!----- Where to next? ----->
-          <hr class="mt-4">
+          <!----- Where to next ----->
+          <hr class="my-4">
           <h2> Where to next? </h2>
-          <p class="lead"> Learn more about the proximity interaction use case and dive into the code. </p>
-          <ul class="list-unstyled mb-4">
-            <li class="media my-2">
-              <a href="https://getpareto.com/use-cases/interaction-detection/"
-                 target="_blank">
-                <img src="images/icon-pareto-anywhere.png"
-                     class="align-self-start mr-3">
+          <p class="lead"> Continue exploring our open architecture and all its applications. </p>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
+              <a href="https://github.com/reelyactive/diract/">
+                <img src="images/icon.png">
               </a>
-              <div class="media-body">
-                <a href="https://getpareto.com/use-cases/interaction-detection/"
-                   target="_blank">
-                  <h5 class="mt-0 mb-1"> Proximity Interaction Detection Use Case </h5>
-                </a>
-                Learn more about this and other use cases of Pareto Anywhere open source software by reelyActive.
-              </div>
             </li>
-            <li class="media my-2">
-              <a href="https://github.com/reelyactive/diract/" target="_blank">
-                <img src="images/icon.png"
-                     class="align-self-start mr-3">
+            <li class="list-group-item border-0">
+              <a href="https://github.com/reelyactive/diract/">
+                <h5 class="mt-0 mb-1"> <i class="fas fa-external-link-alt"></i> Browse the code on GitHub </h5>
               </a>
-              <div class="media-body">
-                <a href="https://github.com/reelyactive/diract/"
-                   target="_blank">
-                  <h5 class="mt-0 mb-1"> Browse the code on GitHub </h5>
-                </a>
-                Explore the open source implementations of DirAct for Espruino devices.
-              </div>
+              Explore the open source implementations of DirAct for Espruino devices.
             </li>
-            <li class="media my-2">
-              <a href="https://reelyactive.github.io/diy/contact-tracing-architectures/"
-                 target="_blank">
-                <img src="https://reelyactive.github.io/diy/contact-tracing-architectures/images/icon.png"
-                     class="align-self-start mr-3">
+          </ul>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/interoperable-identifier/">
+                <img src="https://reelyactive.github.io/interoperable-identifier/images/icon.png">
               </a>
-              <div class="media-body">
-                <a href="https://reelyactive.github.io/diy/contact-tracing-architectures/"
-                   target="_blank">
-                  <h5 class="mt-0 mb-1"> Contact Tracing Architectures </h5>
-                </a>
-                An overview of architectures combining mobile, beacons, infrastructure and<em>&mdash;most importantly&mdash;</em>human judgement.
-              </div>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/interoperable-identifier/">
+                <h5 class="mt-0 mb-1"> InteroperaBLE Identifier </h5>
+              </a>
+              The open specification used for DirAct device identification.
+            </li>
+          </ul>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/contact-tracing-architectures/">
+                <img src="https://reelyactive.github.io/diy/contact-tracing-architectures/images/icon.png">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io/diy/contact-tracing-architectures/">
+                <h5 class="mt-0 mb-1"> Contact Tracing Architectures </h5>
+              </a>
+              An open reference compiled in 2020 during the COVID-19 pandemic.
+            </li>
+          </ul>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io">
+                <img src="https://reelyactive.github.io/diy/common/images/icon.png">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://reelyactive.github.io">
+                <h5 class="mt-0 mb-1"> reelyActive Developers </h5>
+              </a>
+              Browse all developer documentation and tutorials.
+            </li>
+          </ul>
+          <ul class="list-group list-group-horizontal mb-4">
+            <li class="list-group-item border-0">
+              <a href="https://www.reelyactive.com">
+                <img src="https://reelyactive.github.io/diy/common/images/icon-reelyactive.png">
+              </a>
+            </li>
+            <li class="list-group-item border-0">
+              <a href="https://www.reelyactive.com">
+                <h5 class="mt-0 mb-1"> <i class="fas fa-external-link-alt"></i> reelyActive </h5>
+              </a>
+              Let's put things in context, one space at a time.
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <footer class="footer">
+    <footer class="footer bg-dark bg-gradient">
       <a href="https://github.com/reelyactive/diract"> DirAct </a>
       &nbsp; | &nbsp;
-      <a href="https://www.reelyactive.com"> &copy; reelyActive 2019-2020 </a>
+      <a href="https://www.reelyactive.com"> &copy; reelyActive 2019-2023 </a>
     </footer>
-    <script defer src="js/solid.min.js"></script>
-    <script defer src="js/brands.min.js"></script>
-    <script defer src="js/fontawesome.min.js"></script>
-    <script src="js/jquery-3.4.0.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Optional JavaScript -->
+    <script defer src="js/fontawesome-reelyactive.min.js"></script>
+    <script src="js/bootstrappyactive.bundle.min.js"></script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+            data-cf-beacon='{"token": "75099ede11644990a7ffdffc6c28f487"}'>
+    </script>
   </body>
 </html>
